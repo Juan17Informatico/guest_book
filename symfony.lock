@@ -105,6 +105,9 @@
     "pagerfanta/pagerfanta": {
         "version": "v2.0.1"
     },
+    "predis/predis": {
+        "version": "v1.1.10"
+    },
     "psr/cache": {
         "version": "2.0.0"
     },
