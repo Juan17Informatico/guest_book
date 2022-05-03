@@ -12,22 +12,25 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ConferenceController extends AbstractController
-{
-    #[Route('/', name: 'homepage')]
-    public function index(ConferenceRepository $conferenceRepository, SessionInterface $session)
+{   
+    /**
+     * @Route("/", name= "homepage") 
+     */
+    public function index(ConferenceRepository $conferenceRepository)
     {
         
        
-        dump($session->get('prueba'));
-
+      
         $conferences = $conferenceRepository->findAll();
+        
         return $this->render('conference/index.html.twig',[
             'conferences' => $conferences
         ]);
 
     }
-
-    #[Route('/conference/{id}', name: 'conference')]
+    /**
+     * @Route("/conference/{id}", name= "conference") 
+     */
     public function show(Request $request, CommentRepository $commentRepository, Conference $conference)
     {
         $offset = max(0, $request->query->getInt('offset', 0));
