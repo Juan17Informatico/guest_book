@@ -6,6 +6,9 @@ use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
+ /**
+  * @ORM\HasLifecycleCallbacks()
+*/ 
 class Comment
 {
     #[ORM\Id]
@@ -31,6 +34,13 @@ class Comment
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photoFileName;
+
+    /**
+     * @ORM\PrePersist()
+    */
+    public function setCreatedAtValue(){
+
+    }
 
     public function __toString()
     {
